@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	fd, err := os.OpenFile("E:\\test\\aoc\\day20\\data", os.O_RDONLY, 0751)
+	fd, err := os.OpenFile("E:\\test\\aoc\\day23\\data", os.O_RDONLY, 0751)
 	if err != nil {
 		log.Println(err)
 		return
