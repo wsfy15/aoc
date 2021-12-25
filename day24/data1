@@ -5,17 +5,17 @@ mod x 26
 div z 1
 add x 13
 eql x w
-eql x 0
+eql x 0  x=1
 mul y 0
 add y 25
 mul y x
-add y 1
+add y 1  y=26
 mul z y
 mul y 0
 add y w
-add y 13
+add y 13  v1=inp[0] + 13
 mul y x
-add z y
+add z y  z=v1
 inp w
 mul x 0
 add x z
@@ -23,17 +23,17 @@ mod x 26
 div z 1
 add x 11
 eql x w
-eql x 0
+eql x 0  x=1
 mul y 0
 add y 25
 mul y x
-add y 1
-mul z y
+add y 1  y=26
+mul z y  z=v1*26
 mul y 0
 add y w
-add y 10
+add y 10 v2=inp[1]+10
 mul y x
-add z y
+add z y z = v1 * 26 + v2
 inp w
 mul x 0
 add x z
@@ -41,35 +41,35 @@ mod x 26
 div z 1
 add x 15
 eql x w
-eql x 0
+eql x 0  x=1
 mul y 0
 add y 25
 mul y x
-add y 1
-mul z y
+add y 1  y=26
+mul z y  z = (v1 * 26 + v2 ) * 26
 mul y 0
 add y w
-add y 5
+add y 5  v3 = inp[2] + 5
 mul y x
-add z y
+add z y  z = (v1 * 26 + v2 ) * 26 + v3
 inp w
 mul x 0
 add x z
 mod x 26
-div z 26
-add x -11
+div z 26    z = v1 * 26 + v2
+add x -11   x = v3 - 11
 eql x w
 eql x 0
 mul y 0
 add y 25
 mul y x
-add y 1
-mul z y
+add y 1    v4 = 25 * (v3 - 11 != inp[3]) + 1
+mul z y    z = (v1 * 26 + v2) * v4
 mul y 0
 add y w
 add y 14
-mul y x
-add z y
+mul y x    v5 = (inp[3] + 14) * (v3 - 11 != inp[3])
+add z y    z = (v1 * 26 + v2) * v4 + v5
 inp w
 mul x 0
 add x z
@@ -77,90 +77,90 @@ mod x 26
 div z 1
 add x 14
 eql x w
-eql x 0
+eql x 0  x = 1
 mul y 0
 add y 25
 mul y x
-add y 1
-mul z y
+add y 1  y =26
+mul z y  z = 26 * ((v1 * 26 + v2) * v4 + v5)
 mul y 0
 add y w
 add y 5
-mul y x
-add z y
+mul y x  v6 = inp[4] + 5
+add z y   z = 26 * ((v1 * 26 + v2) * v4 + v5) + v6
 inp w
 mul x 0
 add x z
 mod x 26
-div z 26
+div z 26   z = (v1 * 26 + v2) * v4 + v5
 add x 0
 eql x w
-eql x 0
+eql x 0   x = v6 != inp[5]
 mul y 0
 add y 25
 mul y x
-add y 1
+add y 1   v7
 mul z y
 mul y 0
 add y w
 add y 15
-mul y x
+mul y x   v8
 add z y
-inp w
+inp w    6
 mul x 0
 add x z
 mod x 26
 div z 1
 add x 12
 eql x w
-eql x 0
+eql x 0  x=1
 mul y 0
 add y 25
 mul y x
-add y 1
-mul z y
+add y 1  y=26
+mul z y  z*26
 mul y 0
 add y w
 add y 4
-mul y x
+mul y x  v9
 add z y
-inp w
+inp w  7
 mul x 0
 add x z
 mod x 26
 div z 1
 add x 12
 eql x w
-eql x 0
+eql x 0  x = 1
 mul y 0
 add y 25
 mul y x
-add y 1
+add y 1  y = 26
 mul z y
 mul y 0
 add y w
 add y 11
-mul y x
+mul y x  v10 = inp[7] + 11
 add z y
-inp w
+inp w     8
 mul x 0
 add x z
 mod x 26
 div z 1
 add x 14
 eql x w
-eql x 0
+eql x 0   x=1
 mul y 0
 add y 25
 mul y x
-add y 1
+add y 1   y=26
 mul z y
 mul y 0
 add y w
 add y 1
-mul y x
+mul y x   v11
 add z y
-inp w
+inp w  9
 mul x 0
 add x z
 mod x 26
@@ -171,14 +171,14 @@ eql x 0
 mul y 0
 add y 25
 mul y x
-add y 1
+add y 1  v12
 mul z y
 mul y 0
 add y w
 add y 15
-mul y x
+mul y x  v13
 add z y
-inp w
+inp w   10
 mul x 0
 add x z
 mod x 26
@@ -189,14 +189,14 @@ eql x 0
 mul y 0
 add y 25
 mul y x
-add y 1
+add y 1   v14
 mul z y
 mul y 0
 add y w
 add y 12
-mul y x
+mul y x  v15
 add z y
-inp w
+inp w   11
 mul x 0
 add x z
 mod x 26
@@ -207,12 +207,12 @@ eql x 0
 mul y 0
 add y 25
 mul y x
-add y 1
+add y 1   v16
 mul z y
 mul y 0
 add y w
 add y 8
-mul y x
+mul y x   v17
 add z y
 inp w
 mul x 0
